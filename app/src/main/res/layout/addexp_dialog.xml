@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:orientation="vertical"
+    android:padding="20dp"
+    android:background="@drawable/cstm_profile_bg">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add Transaction"
+        android:textStyle="bold"
+        android:textSize="30dp"
+        android:textColor="#000000"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Transaction Type:"
+            android:textSize="20dp"
+            android:textColor="#000000"/>
+        <EditText
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:hint="eg. paid"
+            android:layout_marginStart="10dp"
+            android:textColorHint="#000000"
+            android:id="@+id/type"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Category:"
+            android:textSize="20dp"
+            android:textColor="#000000"/>
+        <EditText
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:hint="eg.Shopping"
+            android:gravity="center"
+            android:layout_marginStart="10dp"
+            android:textColorHint="#000000"
+            android:id="@+id/category" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Amount:"
+            android:textSize="20dp"
+            android:textColor="#000000"/>
+        <EditText
+            android:layout_width="60dp"
+            android:layout_height="40dp"
+            android:hint="0"
+            android:gravity="center"
+            android:layout_marginStart="10dp"
+            android:textColorHint="#000000"
+            android:id="@+id/amount"
+            android:inputType="number"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        android:layout_marginTop="15dp">
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+
+            android:text="Cancel"
+            android:textAllCaps="false"
+            android:id="@+id/cancel"
+            />
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="10dp"
+            android:text="Add"
+            android:textAllCaps="false"
+            android:id="@+id/add" />
+
+    </LinearLayout>
+
+</LinearLayout>
