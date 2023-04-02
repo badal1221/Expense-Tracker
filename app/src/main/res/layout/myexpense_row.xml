@@ -41,6 +41,7 @@
                         android:layout_gravity="center_vertical"
                         android:layout_marginVertical="8dp"
                         android:orientation="vertical"
+                        android:layout_marginStart="10dp"
                         android:id="@+id/ll2">
                         <LinearLayout
                             android:layout_width="wrap_content"
@@ -85,7 +86,7 @@
         </RelativeLayout>
     </com.google.android.material.card.MaterialCardView>
     <com.google.android.material.card.MaterialCardView
-        android:layout_width="60dp"
+        android:layout_width="wrap_content"
         android:layout_height="60dp"
         app:cardBackgroundColor="#502586"
         app:cardCornerRadius="14dp"
@@ -93,12 +94,12 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent">
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:id="@+id/amnt"
             android:layout_margin="8dp"
             android:text="58"
-            android:textSize="30dp"
+            android:textSize="25dp"
             android:gravity="center"
             android:textColor="#08700C"/>
 

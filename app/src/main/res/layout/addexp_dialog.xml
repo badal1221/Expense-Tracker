@@ -16,20 +16,34 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <TextView
+        android:orientation="horizontal"
+        android:gravity="center_horizontal"
+        android:layout_marginVertical="10dp">
+        <RadioGroup
+            android:id="@+id/rgtype"
             android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/cstm_edtxt"
+            android:orientation="horizontal"
+            android:paddingHorizontal="10dp">
+
+        <RadioButton
+            android:id="@+id/rbincome"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Transaction Type:"
-            android:textSize="20dp"
-            android:textColor="#000000"/>
-        <EditText
-            android:layout_width="100dp"
-            android:layout_height="50dp"
-            android:hint="eg. paid"
-            android:layout_marginStart="10dp"
-            android:textColorHint="#000000"
-            android:id="@+id/type"/>
+            android:text="INCOME"
+            android:textColor="@color/black" />
+
+        <RadioButton
+            android:id="@+id/rbspend"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="PAID"
+            android:textColor="@color/black"
+            android:layout_marginHorizontal="10dp"/>
+
+        </RadioGroup>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"

@@ -3,11 +3,13 @@ package com.example.trackit;
 import android.graphics.Color;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.charts.LineChart;
@@ -23,6 +25,13 @@ import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.github.mikephil.charting.utils.ColorTemplate;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -34,6 +43,7 @@ public class Stats_frag extends Fragment {
     BarChart barchart;
     LineChart lineChart;
     PieChart piechart;
+    TextView balance;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -43,6 +53,21 @@ public class Stats_frag extends Fragment {
         View view=inflater.inflate(R.layout.fragment_stats_frag, container, false);
         String mobno = getArguments().getString("mobno");
         barchart=view.findViewById(R.id.barchart);
+        balance=view.findViewById(R.id.balance);
+        DatabaseReference databaseReference= FirebaseDatabase.getInstance().getReferenceFromUrl("https://track-it-a092e-default-rtdb.firebaseio.com/");
+
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                balance.setText("Balance:"+snapshot.child("users").child(mobno).child("balance").getValue(String.class));
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
         ArrayList<BarEntry> income=new ArrayList<>();
         ArrayList<BarEntry> expense=new ArrayList<>();
         for(int i=1;i<=12;i++){

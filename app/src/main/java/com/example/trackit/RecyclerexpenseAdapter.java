@@ -1,6 +1,7 @@
 package com.example.trackit;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,8 +33,14 @@ public class RecyclerexpenseAdapter extends RecyclerView.Adapter<Recyclerexpense
         holder.mttype.setText(list.mttype);
         holder.mttype1.setText(list.mttype1);
         holder.date.setText(list.getDate()+" "+list.getTime());
-        holder.balance.setText("Balance: Rs "+list.amount);
+        holder.balance.setText("Balance: Rs "+list.cbalance);
         holder.amnt.setText(String.valueOf(list.getAmount()));
+        if(list.mttype.equals("PAID")){
+            holder.amnt.setTextColor(Color.RED);
+        }
+        else{
+            holder.amnt.setTextColor(Color.GREEN);
+        }
     }
     public void updateData(ArrayList<ExpenseList> arr){
         this.arr=arr;

@@ -2,14 +2,23 @@ package com.example.trackit;
 
 public class ExpenseList {
     String date,time,mttype,mttype1;
-    int amount;
+    int amount,cbalance;
 
-    public ExpenseList(String mttype, String mttype1,String date, String time, int amount) {
+//    public ExpenseList(String mttype, String mttype1,String date, String time, int amount) {
+//        this.date = date;
+//        this.time = time;
+//        this.mttype = mttype;
+//        this.mttype1 = mttype1;
+//        this.amount = amount;
+//    }
+
+    public ExpenseList(String mttype, String mttype1, String date, String time, int amount, int cbalance) {
         this.date = date;
         this.time = time;
         this.mttype = mttype;
         this.mttype1 = mttype1;
         this.amount = amount;
+        this.cbalance = cbalance;
     }
 
     public String getDate() {
@@ -50,5 +59,13 @@ public class ExpenseList {
 
     public void setAmount(int amount) {
         this.amount = amount;
+    }
+
+    public int getCbalance() {
+        return cbalance;
+    }
+
+    public void setCbalance(int cbalance) {
+        this.cbalance = cbalance;
     }
 }

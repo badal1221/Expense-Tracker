@@ -84,6 +84,7 @@ public class Signup extends AppCompatActivity {
                                 databaseReference.child("users").child(mobileno).child("name").setValue(name);
                                 databaseReference.child("users").child(mobileno).child("password").setValue(password);
                                 databaseReference.child("users").child(mobileno).child("email").setValue(email);
+                                databaseReference.child("users").child(mobileno).child("balance").setValue("0");
                                 Toast.makeText(Signup.this, "Registered Successfully", Toast.LENGTH_SHORT).show();
                                 MemoryData.saveData("Loggedin",Signup.this);
                                 MemoryData.savenumber(mobileno,Signup.this);
