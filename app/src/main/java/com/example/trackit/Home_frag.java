@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -58,36 +59,10 @@ public class Home_frag extends Fragment {
         recview.setAdapter(adapter);
         DatabaseReference databaseReference= FirebaseDatabase.getInstance().getReferenceFromUrl("https://track-it-a092e-default-rtdb.firebaseio.com/");
 
-  //      databaseReference.addValueEventListener(new ValueEventListener() {
- //           @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                balance.setText("Balance:"+snapshot.child("users").child(mobno).child("balance").getValue(String.class));
-//                arr.clear();
-//                if(snapshot.child("users").child(mobno).hasChild("expense")){
-//                    for(DataSnapshot dataSnapshot:snapshot.child("users").child(mobno).child("expense").getChildren()){
-//                        String mttype=dataSnapshot.child("mttype").getValue(String.class);
-//                        String mttype1=dataSnapshot.child("mttype1").getValue(String.class);
-//                        String date=dataSnapshot.child("date").getValue(String.class);
-//                        String time=dataSnapshot.child("time").getValue(String.class);
-//                        String amount=dataSnapshot.child("amount").getValue(String.class);
-//                       // arr.add(new ExpenseList(mttype,mttype1,date,time,Integer.parseInt(amount)));
-//                    }
-//                      Collections.reverse(arr);
-//                      adapter.updateData(arr);
-//                }
-//            }
-
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//
-//            }
-//        });
-
-
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                balance.setText("Balance:"+snapshot.child("users").child(mobno).child("balance").getValue(String.class));
+                balance.setText("Balance:₹"+snapshot.child("users").child(mobno).child("balance").getValue(String.class));
                 arr.clear();
                 if(snapshot.child("users").child(mobno).hasChild("expense")){
                     for(DataSnapshot dataSnapshot:snapshot.child("users").child(mobno).child("expense").getChildren()){
@@ -103,7 +78,6 @@ public class Home_frag extends Fragment {
                     adapter.updateData(arr);
                 }
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
@@ -169,14 +143,21 @@ public class Home_frag extends Fragment {
                                     String bal=snapshot.child("users").child(mobno).child("balance").getValue(String.class);
                                     int bala=Integer.parseInt(bal);
                                     int amtt=Integer.parseInt(amt);
+                                    Collections.reverse(arr);
                                     if(finalType.equals("PAID")){
                                         databaseReference.child("users").child(mobno).child("balance").setValue(String.valueOf(bala-amtt));
                                         databaseReference.child("users").child(mobno).child("expense").child(nextexp).child("cbalance").setValue(String.valueOf(bala-amtt));
+                                        arr.add(new ExpenseList(finalType,type1,simpleDateFormat.format(date),simpletimeFormat.format(date),amtt,bala-amtt));
+                                        balance.setText("Balance:"+String.valueOf(bala-amtt));
                                     }
                                     else{
                                         databaseReference.child("users").child(mobno).child("balance").setValue(String.valueOf(bala+amtt));
                                         databaseReference.child("users").child(mobno).child("expense").child(nextexp).child("cbalance").setValue(String.valueOf(bala+amtt));
+                                        arr.add(new ExpenseList(finalType,type1,simpleDateFormat.format(date),simpletimeFormat.format(date),amtt,bala+amtt));
+                                        balance.setText("Balance:₹"+String.valueOf(bala+amtt));
                                     }
+                                    Collections.reverse(arr);
+                                    adapter.updateData(arr);
                                 }
                                 @Override
                                 public void onCancelled(@NonNull DatabaseError error) {

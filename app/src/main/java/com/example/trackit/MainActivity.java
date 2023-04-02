@@ -57,4 +57,5 @@ public class MainActivity extends AppCompatActivity {
             ft.replace(R.id.container,frag);
         ft.commit();
     }
+
 }

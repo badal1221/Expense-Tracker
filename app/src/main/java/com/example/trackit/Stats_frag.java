@@ -59,7 +59,31 @@ public class Stats_frag extends Fragment {
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                balance.setText("Balance:"+snapshot.child("users").child(mobno).child("balance").getValue(String.class));
+                balance.setText("Balance:₹"+snapshot.child("users").child(mobno).child("balance").getValue(String.class));
+
+                //Linechart start
+                int x=(int)snapshot.child("users").child(mobno).child("expense").getChildrenCount();
+                lineChart=view.findViewById(R.id.linechart);
+                ArrayList<Entry> savings=new ArrayList<>();
+                Entry entry=new Entry(0,0);
+                savings.add(entry);
+                for(int i=1;i<=x;i++){
+                    int y=Integer.parseInt(snapshot.child("users").child(mobno).child("expense").child(String.valueOf(i)).child("cbalance").getValue(String.class));
+                    Entry entry1=new Entry(i,y);
+                    savings.add(entry1);
+                }
+                LineDataSet lineDataSet=new LineDataSet(savings,"SAVINGS");
+                lineDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
+                ArrayList<ILineDataSet> datasets=new ArrayList<>();
+                datasets.add(lineDataSet);
+                LineData data=new LineData(datasets);
+                lineChart.setData(data);
+                lineChart.animateX(3000);
+                lineChart.animateY(3000);
+                lineChart.getDescription().setText("");
+                lineChart.invalidate();
+                //Linechart end
+
             }
 
             @Override
@@ -98,24 +122,24 @@ public class Stats_frag extends Fragment {
 
 
         //Line chart
-        lineChart=view.findViewById(R.id.linechart);
-        ArrayList<Entry> savings=new ArrayList<>();
-        for(int i=1;i<=12;i++){
-            float value=(float)(i%3);
-            float value1=(float)(i%5.0);
-            Entry entry=new Entry(i,value-value1);
-            savings.add(entry);
-        }
-        LineDataSet lineDataSet=new LineDataSet(savings,"SAVINGS");
-        lineDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
-        ArrayList<ILineDataSet> datasets=new ArrayList<>();
-        datasets.add(lineDataSet);
-        LineData data=new LineData(datasets);
-        lineChart.setData(data);
-        lineChart.animateX(5000);
-        lineChart.animateY(5000);
-        lineChart.getDescription().setText("");
-        lineChart.invalidate();
+//        lineChart=view.findViewById(R.id.linechart);
+//        ArrayList<Entry> savings=new ArrayList<>();
+//        for(int i=1;i<=12;i++){
+//            float value=(float)(i%3);
+//            float value1=(float)(i%5.0);
+//            Entry entry=new Entry(i,value-value1);
+//            savings.add(entry);
+//        }
+//        LineDataSet lineDataSet=new LineDataSet(savings,"SAVINGS");
+//        lineDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
+//        ArrayList<ILineDataSet> datasets=new ArrayList<>();
+//        datasets.add(lineDataSet);
+//        LineData data=new LineData(datasets);
+//        lineChart.setData(data);
+//        lineChart.animateX(5000);
+//        lineChart.animateY(5000);
+//        lineChart.getDescription().setText("");
+//        lineChart.invalidate();
         //Line chart finished
 
         //Pie chart start

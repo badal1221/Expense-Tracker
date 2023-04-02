@@ -43,7 +43,7 @@ public class Profile_frag extends Fragment {
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                balance.setText("Balance:"+snapshot.child("users").child(mobno).child("balance").getValue(String.class));
+                balance.setText("Balance:₹"+snapshot.child("users").child(mobno).child("balance").getValue(String.class));
                 name.setText("Name:"+snapshot.child("users").child(mobno).child("name").getValue(String.class));
                 phoneno.setText(mobno);
             }

@@ -33,7 +33,7 @@ public class RecyclerexpenseAdapter extends RecyclerView.Adapter<Recyclerexpense
         holder.mttype.setText(list.mttype);
         holder.mttype1.setText(list.mttype1);
         holder.date.setText(list.getDate()+" "+list.getTime());
-        holder.balance.setText("Balance: Rs "+list.cbalance);
+        holder.balance.setText("Balance:₹"+list.cbalance);
         holder.amnt.setText(String.valueOf(list.getAmount()));
         if(list.mttype.equals("PAID")){
             holder.amnt.setTextColor(Color.RED);

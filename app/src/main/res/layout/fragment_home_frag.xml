@@ -52,7 +52,8 @@
                     android:textColor="@color/black"
                     android:background="#EDE6E6"
                     android:paddingHorizontal="10dp"
-                    android:id="@+id/balance"/>
+                    android:id="@+id/balance"
+                    android:text="Balance:₹"/>
             </com.google.android.material.card.MaterialCardView>
         </com.google.android.material.card.MaterialCardView>
 
