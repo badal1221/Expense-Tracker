@@ -110,21 +110,21 @@
                         android:layout_below="@id/tv2"
                         android:id="@+id/linechart"
                         android:layout_marginTop="15dp"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/linechart"
-                        android:text="Monthly Expenditure pie chart"
-                        android:textSize="20dp"
-                        android:textColor="@color/black"
-                        android:layout_marginTop="15dp"
-                        android:id="@+id/tv3"/>
-                    <com.github.mikephil.charting.charts.PieChart
-                        android:layout_width="match_parent"
-                        android:layout_height="300dp"
-                        android:layout_below="@id/tv3"
-                        android:id="@+id/piechart"
-                        android:layout_marginTop="15dp"/>
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_below="@id/linechart"-->
+<!--                        android:text="Monthly Expenditure pie chart"-->
+<!--                        android:textSize="20dp"-->
+<!--                        android:textColor="@color/black"-->
+<!--                        android:layout_marginTop="15dp"-->
+<!--                        android:id="@+id/tv3"/>-->
+<!--                    <com.github.mikephil.charting.charts.PieChart-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="300dp"-->
+<!--                        android:layout_below="@id/tv3"-->
+<!--                        android:id="@+id/piechart"-->
+<!--                        android:layout_marginTop="15dp"/>-->
                 </RelativeLayout>
             </ScrollView>
         </RelativeLayout>

@@ -143,20 +143,20 @@ public class Stats_frag extends Fragment {
         //Line chart finished
 
         //Pie chart start
-        piechart=view.findViewById(R.id.piechart);
-        ArrayList<PieEntry> monthly=new ArrayList<>();
-        for(int i=1;i<=12;i++){
-            PieEntry entry=new PieEntry((float)(2*i),"");
-            monthly.add(entry);
-        }
-        PieDataSet pieDataSet=new PieDataSet(monthly,"Expenditure");
-        pieDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
-        pieDataSet.setDrawValues(true);
-        PieData pieData=new PieData(pieDataSet);
-        piechart.setData(pieData);
-        piechart.animateY(5000);
-        piechart.getDescription().setText("");
-        piechart.invalidate();
+//        piechart=view.findViewById(R.id.piechart);
+//        ArrayList<PieEntry> monthly=new ArrayList<>();
+//        for(int i=1;i<=12;i++){
+//            PieEntry entry=new PieEntry((float)(2*i),"");
+//            monthly.add(entry);
+//        }
+//        PieDataSet pieDataSet=new PieDataSet(monthly,"Expenditure");
+//        pieDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
+//        pieDataSet.setDrawValues(true);
+//        PieData pieData=new PieData(pieDataSet);
+//        piechart.setData(pieData);
+//        piechart.animateY(5000);
+//        piechart.getDescription().setText("");
+//        piechart.invalidate();
         //Pie chart finished
         return view;
     }

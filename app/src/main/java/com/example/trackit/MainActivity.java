@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
         frag.setArguments(bundle);
 
         if(flag==0)
-            ft.add(R.id.container,frag);
+            ft.replace(R.id.container,frag);
         else
             ft.replace(R.id.container,frag);
         ft.commit();
